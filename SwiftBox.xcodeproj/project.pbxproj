@@ -13,8 +13,8 @@
 		882D60851A7F05FB001C5181 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D60841A7F05FB001C5181 /* Layout.swift */; };
 		882D608E1A7F07C8001C5181 /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D608C1A7F07C8001C5181 /* Node.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		882D608F1A7F07C8001C5181 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 882D608D1A7F07C8001C5181 /* Node.m */; };
-		882D60B91A7F0D36001C5181 /* Layout.c in Sources */ = {isa = PBXBuildFile; fileRef = 882D60B71A7F0D36001C5181 /* Layout.c */; };
-		882D60BA1A7F0D36001C5181 /* Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60B81A7F0D36001C5181 /* Layout.h */; };
+		882D60B91A7F0D36001C5181 /* Layout.c in Sources */ = {isa = PBXBuildFile; fileRef = 882D60B71A7F0D36001C5181 /* Layout.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		882D60BA1A7F0D36001C5181 /* Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60B81A7F0D36001C5181 /* Layout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,8 +84,8 @@
 				882D606D1A7F05E1001C5181 /* SwiftBox.h */,
 				882D60B71A7F0D36001C5181 /* Layout.c */,
 				882D60B81A7F0D36001C5181 /* Layout.h */,
-				882D608C1A7F07C8001C5181 /* Node.h */,
 				882D608D1A7F07C8001C5181 /* Node.m */,
+				882D608C1A7F07C8001C5181 /* Node.h */,
 				882D60841A7F05FB001C5181 /* Layout.swift */,
 				882D606B1A7F05E1001C5181 /* Supporting Files */,
 			);

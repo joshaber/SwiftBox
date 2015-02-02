@@ -8,29 +8,21 @@
 
 import Cocoa
 import XCTest
+import SwiftBox
 
 class SwiftBoxTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testDescription() {
+		let parent = Layout(size: CGSize(width: 300, height: 300),
+                    childAlignment: .Center,
+                    children: [
+			Layout(flex: 75,
+                   margin: Edges(left: 10, right: 10, top: 0, bottom: 0),
+                   size: CGSize(width: 0, height: 100)),
+			Layout(flex: 25,
+                   size: CGSize(width: 0, height: 50)),
+		])
+
+		parent.layout()
+		XCTAssert(parent.description.utf16Count > 0, "Has a description.")
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
