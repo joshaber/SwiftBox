@@ -1,5 +1,5 @@
 //
-//  Node.h
+//  NodeImpl.h
 //  layout
 //
 //  Created by Josh Abernathy on 1/30/15.
@@ -13,7 +13,7 @@
 ///
 /// This should not be used directly. It's only visible becase of lolswift
 /// reasons. See `Layout` instead.
-@interface Node : NSObject
+@interface NodeImpl : NSObject
 
 @property (nonatomic, readonly, assign) css_node_t *node;
 

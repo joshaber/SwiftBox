@@ -15,4 +15,4 @@ FOUNDATION_EXPORT double SwiftBoxVersionNumber;
 FOUNDATION_EXPORT const unsigned char SwiftBoxVersionString[];
 
 #import <SwiftBox/Layout.h>
-#import <SwiftBox/Node.h>
+#import <SwiftBox/NodeImpl.h>

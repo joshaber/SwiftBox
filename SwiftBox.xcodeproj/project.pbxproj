@@ -13,8 +13,8 @@
 		882D60851A7F05FB001C5181 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D60841A7F05FB001C5181 /* Layout.swift */; };
 		882D60B91A7F0D36001C5181 /* Layout.c in Sources */ = {isa = PBXBuildFile; fileRef = 882D60B71A7F0D36001C5181 /* Layout.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		882D60BA1A7F0D36001C5181 /* Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60B81A7F0D36001C5181 /* Layout.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		882D60BD1A7F1540001C5181 /* Node.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60BB1A7F1540001C5181 /* Node.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		882D60BE1A7F1540001C5181 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 882D60BC1A7F1540001C5181 /* Node.m */; };
+		882D60BD1A7F1540001C5181 /* NodeImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60BB1A7F1540001C5181 /* NodeImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		882D60BE1A7F1540001C5181 /* NodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 882D60BC1A7F1540001C5181 /* NodeImpl.m */; };
 		8896A93A1A7F1966004301E8 /* Layout+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8896A9391A7F1966004301E8 /* Layout+View.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,8 +38,8 @@
 		882D60841A7F05FB001C5181 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		882D60B71A7F0D36001C5181 /* Layout.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Layout.c; path = Generated/Layout.c; sourceTree = SOURCE_ROOT; };
 		882D60B81A7F0D36001C5181 /* Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Layout.h; path = Generated/Layout.h; sourceTree = SOURCE_ROOT; };
-		882D60BB1A7F1540001C5181 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
-		882D60BC1A7F1540001C5181 /* Node.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		882D60BB1A7F1540001C5181 /* NodeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeImpl.h; sourceTree = "<group>"; };
+		882D60BC1A7F1540001C5181 /* NodeImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeImpl.m; sourceTree = "<group>"; };
 		8896A9391A7F1966004301E8 /* Layout+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Layout+View.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,8 +86,8 @@
 				882D606D1A7F05E1001C5181 /* SwiftBox.h */,
 				882D60B81A7F0D36001C5181 /* Layout.h */,
 				882D60B71A7F0D36001C5181 /* Layout.c */,
-				882D60BB1A7F1540001C5181 /* Node.h */,
-				882D60BC1A7F1540001C5181 /* Node.m */,
+				882D60BB1A7F1540001C5181 /* NodeImpl.h */,
+				882D60BC1A7F1540001C5181 /* NodeImpl.m */,
 				882D60841A7F05FB001C5181 /* Layout.swift */,
 				8896A9391A7F1966004301E8 /* Layout+View.swift */,
 				882D606B1A7F05E1001C5181 /* Supporting Files */,
@@ -128,7 +128,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				882D606E1A7F05E1001C5181 /* SwiftBox.h in Headers */,
-				882D60BD1A7F1540001C5181 /* Node.h in Headers */,
+				882D60BD1A7F1540001C5181 /* NodeImpl.h in Headers */,
 				882D60BA1A7F0D36001C5181 /* Layout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +232,7 @@
 				8896A93A1A7F1966004301E8 /* Layout+View.swift in Sources */,
 				882D60851A7F05FB001C5181 /* Layout.swift in Sources */,
 				882D60B91A7F0D36001C5181 /* Layout.c in Sources */,
-				882D60BE1A7F1540001C5181 /* Node.m in Sources */,
+				882D60BE1A7F1540001C5181 /* NodeImpl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

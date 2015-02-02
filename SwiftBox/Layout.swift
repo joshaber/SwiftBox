@@ -55,13 +55,12 @@ public enum SelfAlignment: UInt32 {
 }
 
 public struct Layout {
-	internal let node: Node
+	internal let node: NodeImpl
 
 	public let children: [Layout]
 
 	public init(size: CGSize = CGSizeZero, children: [Layout] = [], direction: Direction = .Row, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
-
-		node = Node()
+		node = NodeImpl()
 		node.node.memory.style.dimensions = (Float(size.width), Float(size.height))
 		node.node.memory.style.margin = margin.asTuple
 		node.node.memory.style.padding = padding.asTuple

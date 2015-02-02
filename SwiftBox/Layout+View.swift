@@ -21,12 +21,12 @@ extension Layout {
 		applyRecursively(view, node: node)
 	}
 
-	private func applyRecursively(view: ViewType, node: Node) {
+	private func applyRecursively(view: ViewType, node: NodeImpl) {
 		view.frame = CGRectIntegral(node.frame)
 
 		for (s, n) in Zip2(view.subviews, node.children) {
 			let subview = s as NSView
-			let childNode = n as Node
+			let childNode = n as NodeImpl
 			applyRecursively(subview, node: childNode)
 		}
 	}

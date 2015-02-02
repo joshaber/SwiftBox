@@ -1,24 +1,24 @@
 //
-//  Node.m
+//  NodeImpl.m
 //  layout
 //
 //  Created by Josh Abernathy on 1/30/15.
 //  Copyright (c) 2015 Josh Abernathy. All rights reserved.
 //
 
-#import "Node.h"
+#import "NodeImpl.h"
 
 static bool alwaysDirty(void *context) {
 	return true;
 }
 
 static css_node_t * getChild(void *context, int i) {
-	Node *self = (__bridge Node *)context;
-	Node *child = self.children[i];
+	NodeImpl *self = (__bridge NodeImpl *)context;
+	NodeImpl *child = self.children[i];
 	return child.node;
 }
 
-@implementation Node
+@implementation NodeImpl
 
 - (void)dealloc {
 	free_css_node(_node);
@@ -43,7 +43,7 @@ static css_node_t * getChild(void *context, int i) {
 }
 
 - (void)prepareForLayout {
-	for (Node *child in self.children) {
+	for (NodeImpl *child in self.children) {
 		[child prepareForLayout];
 	}
 
