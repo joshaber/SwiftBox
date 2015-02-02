@@ -47,6 +47,8 @@ static css_node_t * getChild(void *context, int i) {
 		[child prepareForLayout];
 	}
 
+	// Apparently we need to reset these before laying out, otherwise the layout
+	// has some weird additive effect.
 	self.node->layout.position[CSS_LEFT] = 0;
 	self.node->layout.position[CSS_TOP] = 0;
 	self.node->layout.dimensions[CSS_WIDTH] = CSS_UNDEFINED;
@@ -59,7 +61,7 @@ static css_node_t * getChild(void *context, int i) {
 	layoutNode(self.node, CSS_UNDEFINED);
 }
 
-- (CGRect)frameFromNode {
+- (CGRect)frame {
 	return CGRectMake(self.node->layout.position[CSS_LEFT], self.node->layout.position[CSS_TOP], self.node->layout.dimensions[CSS_WIDTH], self.node->layout.dimensions[CSS_HEIGHT]);
 }
 

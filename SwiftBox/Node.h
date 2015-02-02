@@ -9,14 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "Layout.h"
 
+/// The private wrapper around `css_node_t`.
+///
+/// This should not be used directly. See `Layout` instead.
 @interface Node : NSObject
 
 @property (nonatomic, readonly, assign) css_node_t *node;
 
 @property (nonatomic, copy) NSArray *children;
 
-- (void)layout;
+@property (nonatomic, readonly, assign) CGRect frame;
 
-- (CGRect)frameFromNode;
+- (void)layout;
 
 @end

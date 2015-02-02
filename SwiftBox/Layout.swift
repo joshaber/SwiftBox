@@ -84,7 +84,7 @@ public struct Layout {
 
 	/// Get the frame without laying out.
 	public var frame: CGRect {
-		return node.frameFromNode()
+		return node.frame
 	}
 }
 
