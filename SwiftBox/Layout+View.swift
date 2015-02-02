@@ -15,8 +15,7 @@ import Foundation
 #endif
 
 extension Layout {
-	/// Apply the layout to the given view. Then apply the the layout's children
-	/// to the view's subviews in order.
+	/// Apply the layout to the given view hierarchy.
 	public func apply(view: ViewType) {
 		node.layout()
 		applyRecursively(view, node: node)
