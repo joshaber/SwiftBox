@@ -2,8 +2,6 @@
 
 A Swift wrapper around Facebook's [implementation](https://github.com/facebook/css-layout) of CSS's flexbox.
 
-This is just the core layout logic. This doesn't interaction directly with the view layer at all.
-
 ## Example
 
 ```swift
@@ -25,5 +23,10 @@ println(parent)
 //	[{{10, 100}, {210, 100}}
 //	, {{230, 125}, {70, 50}}
 //	]
+```
 
+Alternatively, you could apply the layout to a view hierarchy (after ensuring Auto Layout is off):
+
+```swift
+parent.apply(someView)
 ```
