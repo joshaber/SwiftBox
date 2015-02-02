@@ -18,4 +18,12 @@ let parent = Layout(size: CGSize(width: 300, height: 300),
            size: CGSize(width: 0, height: 50)),
 ])
 
+parent.layout()
+println(parent)
+
+// {{0, 0}, {300, 300}}
+//	[{{10, 100}, {210, 100}}
+//	, {{230, 125}, {70, 50}}
+//	]
+
 ```
