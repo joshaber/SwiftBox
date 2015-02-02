@@ -71,4 +71,9 @@ public struct Layout {
 		node.node.memory.style.align_items = css_align_t(childAlignment.rawValue)
 		node.children = children.map { $0.node }
 	}
+
+	public func evaluate() -> CGRect {
+		node.layout()
+		return node.frameFromNode()
+	}
 }
