@@ -55,7 +55,7 @@ public enum SelfAlignment: UInt32 {
 }
 
 public struct Layout {
-	private let node: Node
+	internal let node: Node
 
 	public let children: [Layout]
 
