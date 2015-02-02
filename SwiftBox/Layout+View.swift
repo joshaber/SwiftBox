@@ -22,7 +22,7 @@ extension Layout {
 	}
 
 	private func applyRecursively(view: ViewType, node: Node) {
-		view.frame = node.frame
+		view.frame = CGRectIntegral(node.frame)
 
 		for (s, n) in Zip2(view.subviews, node.children) {
 			let subview = s as NSView
