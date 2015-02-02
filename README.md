@@ -31,4 +31,4 @@ Alternatively, you could apply the layout to a view hierarchy (after ensuring Au
 parent.apply(someView)
 ```
 
-See [SwiftBoxDemo](SwiftBoxDemo) for a demo.
+See [SwiftBoxDemo/SwiftBoxDemo](SwiftBoxDemo) for a demo.
