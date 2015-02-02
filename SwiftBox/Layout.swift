@@ -76,11 +76,13 @@ public struct Layout {
 		self.children = children
 	}
 
+	/// Lay out the receiver and all its children.
 	public func layout() -> CGRect {
 		node.layout()
 		return frame
 	}
 
+	/// Get the frame without laying out.
 	public var frame: CGRect {
 		return node.frameFromNode()
 	}
