@@ -57,6 +57,8 @@ public enum SelfAlignment: UInt32 {
 public struct Layout {
 	private let node: Node
 
+	public let children: [Layout]
+
 	public init(size: CGSize = CGSizeZero, children: [Layout] = [], direction: Direction = .Row, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
 
 		node = Node()
@@ -70,10 +72,24 @@ public struct Layout {
 		node.node.memory.style.align_self = css_align_t(selfAlignment.rawValue)
 		node.node.memory.style.align_items = css_align_t(childAlignment.rawValue)
 		node.children = children.map { $0.node }
+
+		self.children = children
 	}
 
-	public func evaluate() -> CGRect {
+	public func layout() -> CGRect {
 		node.layout()
+		return frame
+	}
+
+	public var frame: CGRect {
 		return node.frameFromNode()
+	}
+}
+
+extension Layout: Printable {
+	public var description: String {
+		let me = NSStringFromRect(frame)
+		let them = (children.count > 0 ? children.description : "")
+		return "\(me)\n\t\(them)"
 	}
 }
