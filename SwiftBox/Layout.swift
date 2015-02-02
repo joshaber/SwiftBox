@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct Edges {
-	let left: CGFloat
-	let right: CGFloat
-	let bottom: CGFloat
-	let top: CGFloat
+public struct Edges {
+	public let left: CGFloat
+	public let right: CGFloat
+	public let bottom: CGFloat
+	public let top: CGFloat
 
 	private var asTuple: (Float, Float, Float, Float) {
 		return (Float(left), Float(top), Float(right), Float(bottom))
 	}
 
-	init(left: CGFloat = 0, right: CGFloat = 0, bottom: CGFloat = 0, top: CGFloat = 0) {
+	public init(left: CGFloat = 0, right: CGFloat = 0, bottom: CGFloat = 0, top: CGFloat = 0) {
 		self.left = left
 		self.right = right
 		self.bottom = bottom
@@ -26,12 +26,12 @@ struct Edges {
 	}
 }
 
-enum Direction: UInt32 {
+public enum Direction: UInt32 {
 	case Column = 0
 	case Row = 1
 }
 
-enum Justification: UInt32 {
+public enum Justification: UInt32 {
 	case FlexStart = 0
 	case Center = 1
 	case FlexEnd = 2
@@ -39,14 +39,14 @@ enum Justification: UInt32 {
 	case SpaceAround = 4
 }
 
-enum ChildAlignment: UInt32 {
+public enum ChildAlignment: UInt32 {
 	case FlexStart = 1
 	case Center = 2
 	case FlexEnd = 3
 	case Stretch = 4
 }
 
-enum SelfAlignment: UInt32 {
+public enum SelfAlignment: UInt32 {
 	case Auto = 0
 	case FlexStart = 1
 	case Center = 2
@@ -54,10 +54,10 @@ enum SelfAlignment: UInt32 {
 	case Stretch = 4
 }
 
-struct Layout {
+public struct Layout {
 	private let node: Node
 
-	init(size: CGSize = CGSizeZero, children: [Layout] = [], direction: Direction = .Row, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
+	public init(size: CGSize = CGSizeZero, children: [Layout] = [], direction: Direction = .Row, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
 
 		node = Node()
 		node.node.memory.style.dimensions = (Float(size.width), Float(size.height))
@@ -70,20 +70,5 @@ struct Layout {
 		node.node.memory.style.align_self = css_align_t(selfAlignment.rawValue)
 		node.node.memory.style.align_items = css_align_t(childAlignment.rawValue)
 		node.children = children.map { $0.node }
-	}
-
-	func apply(view: NSView) {
-		node.layout()
-		applyRecursively(view, node: node)
-	}
-
-	private func applyRecursively(view: NSView, node: Node) {
-		view.frame = node.frameFromNode()
-
-		for (s, n) in Zip2(view.subviews, node.children) {
-			let subview = s as NSView
-			let childNode = n as Node
-			applyRecursively(subview, node: childNode)
-		}
 	}
 }
