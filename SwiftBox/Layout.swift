@@ -54,7 +54,7 @@ public enum SelfAlignment: UInt32 {
 	case Stretch = 4
 }
 
-public struct Layout {
+public class Layout {
 	internal let node: NodeImpl
 
 	public let children: [Layout]
