@@ -15,20 +15,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	func applicationDidFinishLaunching(notification: NSNotification) {
 		let contentView = window.contentView as NSView
-		let parent = Layout(size: contentView.frame.size,
-                            childAlignment: .Center,
-                            children: [
-			Layout(flex: 75,
-                   margin: Edges(left: 10, right: 10),
-                   size: CGSize(width: 0, height: 100)),
-			Layout(flex: 25,
-                   margin: Edges(right: 10),
-                   size: CGSize(width: 0, height: 50)),
+		let parent = Node(size: contentView.frame.size,
+                          childAlignment: .Center,
+                          children: [
+			Node(flex: 75,
+                 margin: Edges(left: 10, right: 10),
+                 size: CGSize(width: 0, height: 100)),
+			Node(flex: 15,
+                 margin: Edges(right: 10),
+                 size: CGSize(width: 0, height: 50)),
+			Node(flex: 10,
+                 margin: Edges(right: 10),
+                 size: CGSize(width: 0, height: 180)),
 		])
 
-		parent.layout()
-		println(parent)
+		let layout = parent.layout()
+		println(layout)
 
-		parent.apply(contentView)
+		layout.apply(contentView)
 	}
 }

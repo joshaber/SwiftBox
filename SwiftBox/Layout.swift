@@ -54,13 +54,34 @@ public enum SelfAlignment: UInt32 {
 	case Stretch = 4
 }
 
-public class Layout {
-	internal let node: NodeImpl
+/// A node in a layout hierarchy.
+public struct Node {
+	public let size: CGSize
+	public let children: [Node]
+	public let direction: Direction
+	public let margin: Edges
+	public let padding: Edges
+	public let wrap: Bool
+	public let justification: Justification
+	public let selfAlignment: SelfAlignment
+	public let childAlignment: ChildAlignment
+	public let flex: CGFloat
 
-	public let children: [Layout]
+	public init(size: CGSize = CGSizeZero, children: [Node] = [], direction: Direction = .Row, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
+		self.size = size
+		self.children = children
+		self.direction = direction
+		self.margin = margin
+		self.padding = padding
+		self.wrap = wrap
+		self.justification = justification
+		self.selfAlignment = selfAlignment
+		self.childAlignment = childAlignment
+		self.flex = flex
+	}
 
-	public init(size: CGSize = CGSizeZero, children: [Layout] = [], direction: Direction = .Row, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
-		node = NodeImpl()
+	private func createUnderlyingNode() -> NodeImpl {
+		let node = NodeImpl()
 		node.node.memory.style.dimensions = (Float(size.width), Float(size.height))
 		node.node.memory.style.margin = margin.asTuple
 		node.node.memory.style.padding = padding.asTuple
@@ -70,27 +91,55 @@ public class Layout {
 		node.node.memory.style.justify_content = css_justify_t(justification.rawValue)
 		node.node.memory.style.align_self = css_align_t(selfAlignment.rawValue)
 		node.node.memory.style.align_items = css_align_t(childAlignment.rawValue)
-		node.children = children.map { $0.node }
-
-		self.children = children
+		node.children = children.map { $0.createUnderlyingNode() }
+		return node
 	}
 
 	/// Lay out the receiver and all its children.
-	public func layout() -> CGRect {
+	public func layout() -> Layout {
+		let node = createUnderlyingNode()
 		node.layout()
-		return frame
-	}
 
-	/// Get the frame without laying out.
-	public var frame: CGRect {
-		return node.frame
+		let children = createLayoutsFromChildren(node)
+		return Layout(frame: node.frame, children: children)
+	}
+}
+
+private func createLayoutsFromChildren(node: NodeImpl) -> [Layout] {
+	return node.children.map {
+		let child = $0 as NodeImpl
+		let frame = child.frame
+		return Layout(frame: frame, children: createLayoutsFromChildren(child))
+	}
+}
+
+/// An evaluated layout.
+/// 
+/// Layouts may not be created manually. They only ever come from laying out a 
+/// Node. See Node.layout.
+public struct Layout {
+	public let frame: CGRect
+	public let children: [Layout]
+
+	private init(frame: CGRect, children: [Layout]) {
+		self.frame = frame
+		self.children = children
 	}
 }
 
 extension Layout: Printable {
 	public var description: String {
-		let me = NSStringFromRect(frame)
-		let them = (children.count > 0 ? children.description : "")
-		return "\(me)\n\t\(them)"
+		return descriptionForDepth(0)
+	}
+
+	private func descriptionForDepth(depth: Int) -> String {
+		let selfDescription = "{origin={\(frame.origin.x), \(frame.origin.y)}, size={\(frame.size.width), \(frame.size.height)}}"
+		if children.count > 0 {
+			let indentation = reduce(0...depth, "\n") { accum, _ in accum + "\t" }
+			let childrenDescription = indentation.join(children.map { $0.descriptionForDepth(depth + 1) })
+			return "\(selfDescription)\(indentation)\(childrenDescription)"
+		} else {
+			return selfDescription
+		}
 	}
 }

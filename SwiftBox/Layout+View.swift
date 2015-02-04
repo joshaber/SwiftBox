@@ -17,17 +17,11 @@ import Foundation
 extension Layout {
 	/// Apply the layout to the given view hierarchy.
 	public func apply(view: ViewType) {
-		node.layout()
-		applyRecursively(view, node: node)
-	}
+		view.frame = CGRectIntegral(frame)
 
-	private func applyRecursively(view: ViewType, node: NodeImpl) {
-		view.frame = CGRectIntegral(node.frame)
-
-		for (s, n) in Zip2(view.subviews, node.children) {
-			let subview = s as NSView
-			let childNode = n as NodeImpl
-			applyRecursively(subview, node: childNode)
+		for (s, layout) in Zip2(view.subviews, children) {
+			let subview = s as ViewType
+			layout.apply(subview)
 		}
 	}
 }
