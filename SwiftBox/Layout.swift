@@ -24,6 +24,13 @@ public struct Edges {
 		self.bottom = bottom
 		self.top = top
 	}
+
+	public init(uniform: CGFloat) {
+		self.left = uniform
+		self.right = uniform
+		self.bottom = uniform
+		self.top = uniform
+	}
 }
 
 public enum Direction: UInt32 {
