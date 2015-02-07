@@ -56,6 +56,10 @@ public enum SelfAlignment: UInt32 {
 
 /// A node in a layout hierarchy.
 public struct Node {
+	/// Indicates that the value is undefined, for the flexbox algorithm to 
+	/// fill in.
+	public static let Undefined: CGFloat = nan("SwiftBox.Node.Undefined")
+
 	public let size: CGSize
 	public let children: [Node]
 	public let direction: Direction
@@ -67,7 +71,7 @@ public struct Node {
 	public let childAlignment: ChildAlignment
 	public let flex: CGFloat
 
-	public init(size: CGSize = CGSizeZero, children: [Node] = [], direction: Direction = .Row, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
+	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], direction: Direction = .Column, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
 		self.size = size
 		self.children = children
 		self.direction = direction
