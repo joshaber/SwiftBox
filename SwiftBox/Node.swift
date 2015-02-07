@@ -1,8 +1,8 @@
 //
-//  Layout.swift
+//  Node.swift
 //  SwiftBox
 //
-//  Created by Josh Abernathy on 1/30/15.
+//  Created by Josh Abernathy on 2/6/15.
 //  Copyright (c) 2015 Josh Abernathy. All rights reserved.
 //
 
@@ -56,7 +56,7 @@ public enum SelfAlignment: UInt32 {
 
 /// A node in a layout hierarchy.
 public struct Node {
-	/// Indicates that the value is undefined, for the flexbox algorithm to 
+	/// Indicates that the value is undefined, for the flexbox algorithm to
 	/// fill in.
 	public static let Undefined: CGFloat = nan("SwiftBox.Node.Undefined")
 
@@ -114,36 +114,5 @@ private func createLayoutsFromChildren(node: NodeImpl) -> [Layout] {
 		let child = $0 as NodeImpl
 		let frame = child.frame
 		return Layout(frame: frame, children: createLayoutsFromChildren(child))
-	}
-}
-
-/// An evaluated layout.
-/// 
-/// Layouts may not be created manually. They only ever come from laying out a 
-/// Node. See Node.layout.
-public struct Layout {
-	public let frame: CGRect
-	public let children: [Layout]
-
-	private init(frame: CGRect, children: [Layout]) {
-		self.frame = frame
-		self.children = children
-	}
-}
-
-extension Layout: Printable {
-	public var description: String {
-		return descriptionForDepth(0)
-	}
-
-	private func descriptionForDepth(depth: Int) -> String {
-		let selfDescription = "{origin={\(frame.origin.x), \(frame.origin.y)}, size={\(frame.size.width), \(frame.size.height)}}"
-		if children.count > 0 {
-			let indentation = reduce(0...depth, "\n") { accum, _ in accum + "\t" }
-			let childrenDescription = indentation.join(children.map { $0.descriptionForDepth(depth + 1) })
-			return "\(selfDescription)\(indentation)\(childrenDescription)"
-		} else {
-			return selfDescription
-		}
 	}
 }
