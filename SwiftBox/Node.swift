@@ -118,7 +118,7 @@ public struct Node {
 
 private func createLayoutsFromChildren(node: NodeImpl) -> [Layout] {
 	return node.children.map {
-		let child = $0 as NodeImpl
+		let child = $0 as! NodeImpl
 		let frame = child.frame
 		return Layout(frame: frame, children: createLayoutsFromChildren(child))
 	}
