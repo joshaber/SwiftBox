@@ -7,6 +7,7 @@ A Swift wrapper around Facebook's [implementation](https://github.com/facebook/c
 ```swift
 let parent = Node(size: CGSize(width: 300, height: 300),
                   childAlignment: .Center,
+                  direction: .Row,
                   children: [
     Node(flex: 75,
          margin: Edges(left: 10, right: 10),
