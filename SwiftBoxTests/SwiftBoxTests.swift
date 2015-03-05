@@ -14,12 +14,17 @@ class SwiftBoxTests: XCTestCase {
     func testDescription() {
 		let parent = Node(size: CGSize(width: 300, height: 300),
                     childAlignment: .Center,
+					direction: .Row,
                     children: [
 			Node(flex: 75,
-                 margin: Edges(left: 10, right: 10, top: 0, bottom: 0),
+                 margin: Edges(left: 10, right: 10),
                  size: CGSize(width: 0, height: 100)),
-			Node(flex: 25,
+			Node(flex: 15,
+				 margin: Edges(right: 10),
                  size: CGSize(width: 0, height: 50)),
+			Node(flex: 10,
+				 margin: Edges(right: 10),
+				 size: CGSize(width: 0, height: 180)),
 		])
 
 		let layout = parent.layout()
@@ -33,7 +38,28 @@ class SwiftBoxTests: XCTestCase {
 		])
 
 		let layout = parent.layout()
-		XCTAssertEqual(layout.frame.size.width, CGFloat(300));
-		XCTAssertEqual(layout.frame.size.height, CGFloat(350));
+		XCTAssertEqual(layout.frame.size, CGSize(width: 300, height: 350));
+	}
+
+	func testMeasureIsUsed() {
+		let measuredSize = CGSize(width: 123, height: 456)
+		let node = Node(measure: { w in
+			return measuredSize
+		})
+
+		let layout = node.layout()
+		XCTAssertEqual(layout.frame.size, measuredSize)
+	}
+
+	func testMaxWidthIsUsed() {
+		let maxWidth: CGFloat = 345
+		var maxWidthGiven: CGFloat = 0
+		let node = Node(measure: { w in
+			maxWidthGiven = w
+			return CGSize(width: 1, height: 1)
+		})
+
+		let layout = node.layout(maxWidth: maxWidth)
+		XCTAssertEqual(maxWidthGiven, maxWidth)
 	}
 }
