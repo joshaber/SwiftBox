@@ -111,10 +111,14 @@ public struct Node {
 		return node
 	}
 
-	/// Lay out the receiver and all its children.
-	public func layout() -> Layout {
+	/// Lay out the receiver and all its children with an optional max width.
+	public func layout(maxWidth: CGFloat? = nil) -> Layout {
 		let node = createUnderlyingNode()
-		node.layout()
+		if let maxWidth = maxWidth {
+			node.layoutWithMaxWidth(maxWidth)
+		} else {
+			node.layout()
+		}
 
 		let children = createLayoutsFromChildren(node)
 		return Layout(frame: node.frame, children: children)

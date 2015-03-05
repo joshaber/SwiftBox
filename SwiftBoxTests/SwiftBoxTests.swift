@@ -51,5 +51,15 @@ class SwiftBoxTests: XCTestCase {
 		XCTAssertEqual(layout.frame.size, measuredSize)
 	}
 
+	func testMaxWidthIsUsed() {
+		let maxWidth: CGFloat = 345
+		var maxWidthGiven: CGFloat = 0
+		let node = Node(measure: { w in
+			maxWidthGiven = w
+			return CGSize(width: 1, height: 1)
+		})
+
+		let layout = node.layout(maxWidth: maxWidth)
+		XCTAssertEqual(maxWidthGiven, maxWidth)
 	}
 }

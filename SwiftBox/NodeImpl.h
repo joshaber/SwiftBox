@@ -25,4 +25,6 @@
 
 - (void)layout;
 
+- (void)layoutWithMaxWidth:(CGFloat)maxWidth;
+
 @end
