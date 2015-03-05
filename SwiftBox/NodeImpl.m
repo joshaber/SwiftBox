@@ -18,6 +18,12 @@ static css_node_t * getChild(void *context, int i) {
 	return child.node;
 }
 
+static css_dim_t measureNode(void *context, float width) {
+	NodeImpl *self = (__bridge NodeImpl *)context;
+	CGSize size = self.measure(width);
+	return (css_dim_t){ size.width, size.height };
+}
+
 @implementation NodeImpl
 
 - (void)dealloc {
@@ -56,13 +62,23 @@ static css_node_t * getChild(void *context, int i) {
 }
 
 - (void)layout {
+	[self layoutWithMaxWidth:CSS_UNDEFINED];
+}
+
+- (void)layoutWithMaxWidth:(CGFloat)maxWidth {
 	[self prepareForLayout];
 
-	layoutNode(self.node, CSS_UNDEFINED);
+	layoutNode(self.node, maxWidth);
 }
 
 - (CGRect)frame {
 	return CGRectMake(self.node->layout.position[CSS_LEFT], self.node->layout.position[CSS_TOP], self.node->layout.dimensions[CSS_WIDTH], self.node->layout.dimensions[CSS_HEIGHT]);
+}
+
+- (void)setMeasure:(CGSize (^)(CGFloat))measure {
+	_measure = [measure copy];
+
+	_node->measure = (_measure != nil ? measureNode : NULL);
 }
 
 @end

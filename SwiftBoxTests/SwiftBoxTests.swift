@@ -38,7 +38,28 @@ class SwiftBoxTests: XCTestCase {
 		])
 
 		let layout = parent.layout()
-		XCTAssertEqual(layout.frame.size.width, CGFloat(300));
-		XCTAssertEqual(layout.frame.size.height, CGFloat(350));
+		XCTAssertEqual(layout.frame.size, CGSize(width: 300, height: 350));
+	}
+
+	func testMeasureIsUsed() {
+		let measuredSize = CGSize(width: 123, height: 456)
+		let node = Node(measure: { w in
+			return measuredSize
+		})
+
+		let layout = node.layout()
+		XCTAssertEqual(layout.frame.size, measuredSize)
+	}
+
+	func testMaxWidthIsUsed() {
+		let maxWidth: CGFloat = 345
+		var maxWidthGiven: CGFloat = 0
+		let node = Node(measure: { w in
+			maxWidthGiven = w
+			return CGSize(width: 1, height: 1)
+		})
+
+		let layout = node.layout(maxWidth: maxWidth)
+		XCTAssertEqual(maxWidthGiven, maxWidth)
 	}
 }

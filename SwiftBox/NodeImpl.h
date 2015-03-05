@@ -21,6 +21,10 @@
 
 @property (nonatomic, readonly, assign) CGRect frame;
 
+@property (nonatomic, copy) CGSize (^measure)(CGFloat width);
+
 - (void)layout;
+
+- (void)layoutWithMaxWidth:(CGFloat)maxWidth;
 
 @end

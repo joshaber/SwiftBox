@@ -77,8 +77,9 @@ public struct Node {
 	public let selfAlignment: SelfAlignment
 	public let childAlignment: ChildAlignment
 	public let flex: CGFloat
+	public let measure: (CGFloat -> CGSize)?
 
-	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], direction: Direction = .Column, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0) {
+	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], direction: Direction = .Column, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0, measure: (CGFloat -> CGSize)? = nil) {
 		self.size = size
 		self.children = children
 		self.direction = direction
@@ -89,6 +90,7 @@ public struct Node {
 		self.selfAlignment = selfAlignment
 		self.childAlignment = childAlignment
 		self.flex = flex
+		self.measure = measure
 	}
 
 	private func createUnderlyingNode() -> NodeImpl {
@@ -102,14 +104,21 @@ public struct Node {
 		node.node.memory.style.justify_content = css_justify_t(justification.rawValue)
 		node.node.memory.style.align_self = css_align_t(selfAlignment.rawValue)
 		node.node.memory.style.align_items = css_align_t(childAlignment.rawValue)
+		if let measure = measure {
+			node.measure = measure
+		}
 		node.children = children.map { $0.createUnderlyingNode() }
 		return node
 	}
 
-	/// Lay out the receiver and all its children.
-	public func layout() -> Layout {
+	/// Lay out the receiver and all its children with an optional max width.
+	public func layout(maxWidth: CGFloat? = nil) -> Layout {
 		let node = createUnderlyingNode()
-		node.layout()
+		if let maxWidth = maxWidth {
+			node.layoutWithMaxWidth(maxWidth)
+		} else {
+			node.layout()
+		}
 
 		let children = createLayoutsFromChildren(node)
 		return Layout(frame: node.frame, children: children)
