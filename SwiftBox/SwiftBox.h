@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Josh Abernathy. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+@import Foundation;
 
 //! Project version number for SwiftBox.
 FOUNDATION_EXPORT double SwiftBoxVersionNumber;
