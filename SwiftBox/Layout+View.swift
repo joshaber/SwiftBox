@@ -9,8 +9,10 @@
 import Foundation
 
 #if os(iOS)
+	import UIKit
 	public typealias ViewType = UIView
 #else
+	import AppKit
 	public typealias ViewType = NSView
 #endif
 
