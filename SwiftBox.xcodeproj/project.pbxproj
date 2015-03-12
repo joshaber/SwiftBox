@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88189F221AAFDA2E00A3E489 /* Layout+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8896A9391A7F1966004301E8 /* Layout+View.swift */; };
 		882D606E1A7F05E1001C5181 /* SwiftBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D606D1A7F05E1001C5181 /* SwiftBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		882D60741A7F05E1001C5181 /* SwiftBox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882D60681A7F05E1001C5181 /* SwiftBox.framework */; };
 		882D607B1A7F05E1001C5181 /* SwiftBoxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D607A1A7F05E1001C5181 /* SwiftBoxTests.swift */; };
@@ -16,6 +17,13 @@
 		882D60BD1A7F1540001C5181 /* NodeImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60BB1A7F1540001C5181 /* NodeImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		882D60BE1A7F1540001C5181 /* NodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 882D60BC1A7F1540001C5181 /* NodeImpl.m */; };
 		8896A93A1A7F1966004301E8 /* Layout+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8896A9391A7F1966004301E8 /* Layout+View.swift */; };
+		889865CE1AAFD932009C19D1 /* Layout.c in Sources */ = {isa = PBXBuildFile; fileRef = 882D60B71A7F0D36001C5181 /* Layout.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		889865CF1AAFD932009C19D1 /* NodeImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 882D60BC1A7F1540001C5181 /* NodeImpl.m */; };
+		889865D01AAFD932009C19D1 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882D60841A7F05FB001C5181 /* Layout.swift */; };
+		889865D11AAFD932009C19D1 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D986181A859EF200A96554 /* Node.swift */; };
+		889865D21AAFD954009C19D1 /* SwiftBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D606D1A7F05E1001C5181 /* SwiftBox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		889865D31AAFD954009C19D1 /* Layout.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60B81A7F0D36001C5181 /* Layout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		889865D41AAFD954009C19D1 /* NodeImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = 882D60BB1A7F1540001C5181 /* NodeImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88D9861A1A859FE700A96554 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D986181A859EF200A96554 /* Node.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		882D60681A7F05E1001C5181 /* SwiftBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		882D606C1A7F05E1001C5181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		882D606C1A7F05E1001C5181 /* Mac.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Mac.plist; sourceTree = "<group>"; };
 		882D606D1A7F05E1001C5181 /* SwiftBox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftBox.h; sourceTree = "<group>"; };
 		882D60731A7F05E1001C5181 /* SwiftBoxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftBoxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		882D60791A7F05E1001C5181 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,6 +50,8 @@
 		882D60BB1A7F1540001C5181 /* NodeImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NodeImpl.h; sourceTree = "<group>"; };
 		882D60BC1A7F1540001C5181 /* NodeImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NodeImpl.m; sourceTree = "<group>"; };
 		8896A9391A7F1966004301E8 /* Layout+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Layout+View.swift"; sourceTree = "<group>"; };
+		889865B31AAFD89B009C19D1 /* SwiftBox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftBox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		889865CC1AAFD8D0009C19D1 /* iOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = iOS.plist; sourceTree = "<group>"; };
 		88D986181A859EF200A96554 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +68,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				882D60741A7F05E1001C5181 /* SwiftBox.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889865AF1AAFD89B009C19D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +95,7 @@
 			children = (
 				882D60681A7F05E1001C5181 /* SwiftBox.framework */,
 				882D60731A7F05E1001C5181 /* SwiftBoxTests.xctest */,
+				889865B31AAFD89B009C19D1 /* SwiftBox.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,7 +119,8 @@
 		882D606B1A7F05E1001C5181 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				882D606C1A7F05E1001C5181 /* Info.plist */,
+				889865CC1AAFD8D0009C19D1 /* iOS.plist */,
+				882D606C1A7F05E1001C5181 /* Mac.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -136,12 +155,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		889865B01AAFD89B009C19D1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				889865D21AAFD954009C19D1 /* SwiftBox.h in Headers */,
+				889865D31AAFD954009C19D1 /* Layout.h in Headers */,
+				889865D41AAFD954009C19D1 /* NodeImpl.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		882D60671A7F05E1001C5181 /* SwiftBox */ = {
+		882D60671A7F05E1001C5181 /* SwiftBox-Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 882D607E1A7F05E1001C5181 /* Build configuration list for PBXNativeTarget "SwiftBox" */;
+			buildConfigurationList = 882D607E1A7F05E1001C5181 /* Build configuration list for PBXNativeTarget "SwiftBox-Mac" */;
 			buildPhases = (
 				882D60631A7F05E1001C5181 /* Sources */,
 				882D60641A7F05E1001C5181 /* Frameworks */,
@@ -152,7 +181,7 @@
 			);
 			dependencies = (
 			);
-			name = SwiftBox;
+			name = "SwiftBox-Mac";
 			productName = SwiftBox;
 			productReference = 882D60681A7F05E1001C5181 /* SwiftBox.framework */;
 			productType = "com.apple.product-type.framework";
@@ -175,6 +204,24 @@
 			productReference = 882D60731A7F05E1001C5181 /* SwiftBoxTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		889865B21AAFD89B009C19D1 /* SwiftBox-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 889865CA1AAFD89B009C19D1 /* Build configuration list for PBXNativeTarget "SwiftBox-iOS" */;
+			buildPhases = (
+				889865AE1AAFD89B009C19D1 /* Sources */,
+				889865AF1AAFD89B009C19D1 /* Frameworks */,
+				889865B01AAFD89B009C19D1 /* Headers */,
+				889865B11AAFD89B009C19D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SwiftBox-iOS";
+			productName = "SwiftBox-iOS";
+			productReference = 889865B31AAFD89B009C19D1 /* SwiftBox.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -190,6 +237,9 @@
 					882D60721A7F05E1001C5181 = {
 						CreatedOnToolsVersion = 6.2;
 					};
+					889865B21AAFD89B009C19D1 = {
+						CreatedOnToolsVersion = 6.3;
+					};
 				};
 			};
 			buildConfigurationList = 882D60621A7F05E1001C5181 /* Build configuration list for PBXProject "SwiftBox" */;
@@ -204,8 +254,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				882D60671A7F05E1001C5181 /* SwiftBox */,
+				882D60671A7F05E1001C5181 /* SwiftBox-Mac */,
 				882D60721A7F05E1001C5181 /* SwiftBoxTests */,
+				889865B21AAFD89B009C19D1 /* SwiftBox-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -219,6 +270,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		882D60711A7F05E1001C5181 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		889865B11AAFD89B009C19D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,12 +306,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		889865AE1AAFD89B009C19D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88189F221AAFDA2E00A3E489 /* Layout+View.swift in Sources */,
+				889865CE1AAFD932009C19D1 /* Layout.c in Sources */,
+				889865CF1AAFD932009C19D1 /* NodeImpl.m in Sources */,
+				889865D01AAFD932009C19D1 /* Layout.swift in Sources */,
+				889865D11AAFD932009C19D1 /* Node.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		882D60761A7F05E1001C5181 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 882D60671A7F05E1001C5181 /* SwiftBox */;
+			target = 882D60671A7F05E1001C5181 /* SwiftBox-Mac */;
 			targetProxy = 882D60751A7F05E1001C5181 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -350,10 +420,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = SwiftBox/Info.plist;
+				INFOPLIST_FILE = SwiftBox/Mac.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftBox;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -369,10 +439,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = SwiftBox/Info.plist;
+				INFOPLIST_FILE = SwiftBox/Mac.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SwiftBox;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -409,6 +479,51 @@
 			};
 			name = Release;
 		};
+		889865C61AAFD89B009C19D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SwiftBox/iOS.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = SwiftBox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		889865C71AAFD89B009C19D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = SwiftBox/iOS.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = SwiftBox;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -421,7 +536,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		882D607E1A7F05E1001C5181 /* Build configuration list for PBXNativeTarget "SwiftBox" */ = {
+		882D607E1A7F05E1001C5181 /* Build configuration list for PBXNativeTarget "SwiftBox-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				882D607F1A7F05E1001C5181 /* Debug */,
@@ -435,6 +550,15 @@
 			buildConfigurations = (
 				882D60821A7F05E1001C5181 /* Debug */,
 				882D60831A7F05E1001C5181 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		889865CA1AAFD89B009C19D1 /* Build configuration list for PBXNativeTarget "SwiftBox-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				889865C61AAFD89B009C19D1 /* Debug */,
+				889865C71AAFD89B009C19D1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
