@@ -160,8 +160,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				889865D21AAFD954009C19D1 /* SwiftBox.h in Headers */,
-				889865D31AAFD954009C19D1 /* Layout.h in Headers */,
 				889865D41AAFD954009C19D1 /* NodeImpl.h in Headers */,
+				889865D31AAFD954009C19D1 /* Layout.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
