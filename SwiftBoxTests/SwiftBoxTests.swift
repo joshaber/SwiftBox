@@ -28,7 +28,7 @@ class SwiftBoxTests: XCTestCase {
 		])
 
 		let layout = parent.layout()
-		XCTAssert("\(layout)".utf16Count > 0, "Has a description.")
+		XCTAssert(count("\(layout)".utf16) > 0, "Has a description.")
     }
 
 	func testSizeParentBasedOnChildren() {
