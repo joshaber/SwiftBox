@@ -133,19 +133,19 @@ private func createLayoutsFromChildren(node: NodeImpl) -> [Layout] {
 	}
 }
 
-extension CGPoint {
+public extension CGPoint {
 	var isUndefined: Bool {
-		return x == Node.Undefined || y == Node.Undefined
+		return isnan(x) || isnan(y)
 	}
 }
 
-extension CGSize {
+public extension CGSize {
 	var isUndefined: Bool {
-		return width == Node.Undefined || height == Node.Undefined
+		return isnan(width) || isnan(height)
 	}
 }
 
-extension CGRect {
+public extension CGRect {
 	var isUndefined: Bool {
 		return origin.isUndefined || size.isUndefined
 	}

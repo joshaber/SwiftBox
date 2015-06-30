@@ -62,4 +62,24 @@ class SwiftBoxTests: XCTestCase {
 		let layout = node.layout(maxWidth: maxWidth)
 		XCTAssertEqual(maxWidthGiven, maxWidth)
 	}
+	
+	func testUndefinedPoint() {
+		XCTAssertFalse(CGPoint.zeroPoint.isUndefined, "ordinary point is not undefined")
+		XCTAssert(CGPoint(x: 0, y: Node.Undefined).isUndefined, "detects undefined point.y")
+		XCTAssert(CGPoint(x: Node.Undefined, y: 0).isUndefined, "detects undefined point.x")
+	}
+
+	func testUndefinedSize() {
+		XCTAssertFalse(CGSize.zeroSize.isUndefined, "ordinary size is not undefined")
+		XCTAssert(CGSize(width: 0, height: Node.Undefined).isUndefined, "detects undefined size.height")
+		XCTAssert(CGSize(width: Node.Undefined, height: 0).isUndefined, "detects undefined size.width")
+	}
+	
+	func testUndefinedRect() {
+		XCTAssertFalse(CGRect.infiniteRect.isUndefined, "infinite rect is not undefined")
+		XCTAssertFalse(CGRect.nullRect.isUndefined, "null rect is not undefined")
+		XCTAssertFalse(CGRect.zeroRect.isUndefined, "zero rect is not undefined")
+		XCTAssert(CGRect(x: 0, y: 0, width: Node.Undefined, height: 0).isUndefined, "detects undefined size in rect")
+		XCTAssert(CGRect(x: Node.Undefined, y: 0, width: 1, height: 1).isUndefined, "detects undefined origin in rect")
+	}
 }
