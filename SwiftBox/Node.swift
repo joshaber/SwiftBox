@@ -132,3 +132,21 @@ private func createLayoutsFromChildren(node: NodeImpl) -> [Layout] {
 		return Layout(frame: frame, children: createLayoutsFromChildren(child))
 	}
 }
+
+public extension CGPoint {
+	var isUndefined: Bool {
+		return isnan(x) || isnan(y)
+	}
+}
+
+public extension CGSize {
+	var isUndefined: Bool {
+		return isnan(width) || isnan(height)
+	}
+}
+
+public extension CGRect {
+	var isUndefined: Bool {
+		return origin.isUndefined || size.isUndefined
+	}
+}
