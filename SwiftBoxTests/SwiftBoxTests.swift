@@ -28,7 +28,7 @@ class SwiftBoxTests: XCTestCase {
 		])
 
 		let layout = parent.layout()
-		XCTAssert(("\(layout)".utf16).count > 0, "Has a description.")
+		XCTAssert(count("\(layout)".utf16) > 0, "Has a description.")
     }
 
 	func testSizeParentBasedOnChildren() {
@@ -59,7 +59,7 @@ class SwiftBoxTests: XCTestCase {
 			return CGSize(width: 1, height: 1)
 		})
 
-		node.layout(maxWidth)
+		let layout = node.layout(maxWidth: maxWidth)
 		XCTAssertEqual(maxWidthGiven, maxWidth)
 	}
 	
