@@ -438,7 +438,6 @@ static void layoutNodeImpl(css_node_t *node, float parentMaxWidth) {
   // We want to execute the next two loops one per line with flex-wrap
   int startLine = 0;
   int endLine = 0;
-  int nextOffset = 0;
   int alreadyComputedNextLayout = 0;
   // We aggregate the total dimensions of the container in those two variables
   float linesCrossDim = 0;
