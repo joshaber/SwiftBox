@@ -41,8 +41,8 @@ public struct Edges {
 
 public enum FlexDirection: UInt32 {
 	case Column = 0
-	case Row = 1
-  case ColumnReverse = 2
+  case ColumnReverse = 1
+	case Row = 2
   case RowReverse = 3
 }
 
