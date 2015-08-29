@@ -26,6 +26,6 @@
 
 - (void)layout;
 
-- (void)layoutWithMaxWidth:(CGFloat)maxWidth;
+- (void)layoutWithMaxWidth:(CGFloat)maxWidth parentDirection:(css_direction_t)parentDirection;
 
 @end

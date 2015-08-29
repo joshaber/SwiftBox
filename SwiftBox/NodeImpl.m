@@ -62,13 +62,13 @@ static css_dim_t measureNode(void *context, float width) {
 }
 
 - (void)layout {
-	[self layoutWithMaxWidth:CSS_UNDEFINED];
+	[self layoutWithMaxWidth:CSS_UNDEFINED parentDirection:CSS_DIRECTION_INHERIT];
 }
 
-- (void)layoutWithMaxWidth:(CGFloat)maxWidth {
+- (void)layoutWithMaxWidth:(CGFloat)maxWidth parentDirection:(css_direction_t)parentDirection {
 	[self prepareForLayout];
 
-	layoutNode(self.node, maxWidth);
+	layoutNode(self.node, maxWidth, parentDirection);
 }
 
 - (CGRect)frame {
