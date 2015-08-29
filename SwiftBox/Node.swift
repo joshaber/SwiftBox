@@ -137,6 +137,7 @@ public struct Node {
 	/// Lay out the receiver and all its children with an optional max width.
 	public func layout(maxWidth: CGFloat? = nil) -> Layout {
 		let node = createUnderlyingNode()
+
 		if let maxWidth = maxWidth {
       node.layoutWithMaxWidth(maxWidth, parentDirection: node.node.memory.style.direction)
 		} else {
