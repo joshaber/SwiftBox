@@ -25,8 +25,8 @@ public struct Edges {
 		self.right = right
 		self.bottom = bottom
 		self.top = top
-    self.start = start;
-    self.end = end;
+    self.start = start
+    self.end = end
 	}
 
 	public init(uniform: CGFloat) {
@@ -34,8 +34,8 @@ public struct Edges {
 		self.right = uniform
 		self.bottom = uniform
 		self.top = uniform
-    self.start = uniform;
-    self.end = uniform;
+    self.start = uniform
+    self.end = uniform
 	}
 }
 
