@@ -75,6 +75,11 @@ public enum Direction: UInt32 {
 	case RightToLeft = 2
 }
 
+public enum PositionType: UInt32 {
+	case Relative = 0
+	case Absolute = 1
+}
+
 /// A node in a layout hierarchy.
 public struct Node {
 	/// Indicates that the value is undefined, for the flexbox algorithm to
@@ -96,9 +101,10 @@ public struct Node {
 	public let childAlignment: ChildAlignment
 	public let contentAlignment: ChildAlignment
 	public let flex: CGFloat
+	public let positionType: PositionType
 	public let measure: (CGFloat -> CGSize)?
 
-	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), minSize: CGSize = CGSize(width: 0, height: 0), maxSize: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], flexDirection: FlexDirection = .Column, direction: Direction = .Inherit, margin: Edges = Edges(), padding: Edges = Edges(), border: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, contentAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0, measure: (CGFloat -> CGSize)? = nil) {
+	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), minSize: CGSize = CGSize(width: 0, height: 0), maxSize: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], flexDirection: FlexDirection = .Column, direction: Direction = .Inherit, margin: Edges = Edges(), padding: Edges = Edges(), border: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, contentAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0, positionType: PositionType = .Relative, measure: (CGFloat -> CGSize)? = nil) {
 		self.size = size
 		self.minSize = minSize
 		self.maxSize = maxSize
@@ -114,6 +120,7 @@ public struct Node {
 		self.childAlignment = childAlignment
 		self.contentAlignment = contentAlignment
 		self.flex = flex
+		self.positionType = positionType
 		self.measure = measure
 	}
 
@@ -125,6 +132,7 @@ public struct Node {
 		node.node.memory.style.margin = margin.asTuple
 		node.node.memory.style.padding = padding.asTuple
 		node.node.memory.style.border = border.asTuple
+		node.node.memory.style.position_type = css_position_type_t(positionType.rawValue)
 		node.node.memory.style.flex = Float(flex)
 		node.node.memory.style.flex_direction = css_flex_direction_t(flexDirection.rawValue)
 		node.node.memory.style.direction = css_direction_t(direction.rawValue)
