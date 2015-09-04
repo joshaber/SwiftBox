@@ -20,6 +20,10 @@ public struct Edges {
 		return (Float(left), Float(top), Float(right), Float(bottom), Float(start), Float(end))
 	}
 
+	private var asCompactTuple: (Float, Float, Float, Float) {
+		return (Float(left), Float(top), Float(right), Float(bottom))
+	}
+
 	public init(left: CGFloat = 0, right: CGFloat = 0, bottom: CGFloat = 0, top: CGFloat = 0, start: CGFloat = 0, end: CGFloat = 0) {
 		self.left = left
 		self.right = right
@@ -95,6 +99,7 @@ public struct Node {
 	public let margin: Edges
 	public let padding: Edges
 	public let border: Edges
+	public let position: Edges
 	public let wrap: Bool
 	public let justification: Justification
 	public let selfAlignment: SelfAlignment
@@ -104,7 +109,7 @@ public struct Node {
 	public let positionType: PositionType
 	public let measure: (CGFloat -> CGSize)?
 
-	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), minSize: CGSize = CGSize(width: 0, height: 0), maxSize: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], flexDirection: FlexDirection = .Column, direction: Direction = .Inherit, margin: Edges = Edges(), padding: Edges = Edges(), border: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, contentAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0, positionType: PositionType = .Relative, measure: (CGFloat -> CGSize)? = nil) {
+	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), minSize: CGSize = CGSize(width: 0, height: 0), maxSize: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], flexDirection: FlexDirection = .Column, direction: Direction = .Inherit, margin: Edges = Edges(), padding: Edges = Edges(), border: Edges = Edges(), position: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, contentAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0, positionType: PositionType = .Relative, measure: (CGFloat -> CGSize)? = nil) {
 		self.size = size
 		self.minSize = minSize
 		self.maxSize = maxSize
@@ -114,6 +119,7 @@ public struct Node {
 		self.margin = margin
 		self.padding = padding
 		self.border = border
+		self.position = position
 		self.wrap = wrap
 		self.justification = justification
 		self.selfAlignment = selfAlignment
@@ -132,6 +138,7 @@ public struct Node {
 		node.node.memory.style.margin = margin.asTuple
 		node.node.memory.style.padding = padding.asTuple
 		node.node.memory.style.border = border.asTuple
+		node.node.memory.style.position = position.asCompactTuple
 		node.node.memory.style.position_type = css_position_type_t(positionType.rawValue)
 		node.node.memory.style.flex = Float(flex)
 		node.node.memory.style.flex_direction = css_flex_direction_t(flexDirection.rawValue)
