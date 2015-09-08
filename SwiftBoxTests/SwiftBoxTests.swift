@@ -14,7 +14,7 @@ class SwiftBoxTests: XCTestCase {
     func testDescription() {
 		let parent = Node(size: CGSize(width: 300, height: 300),
                     childAlignment: .Center,
-					direction: .Row,
+					flexDirection: .Row,
                     children: [
 			Node(flex: 75,
                  margin: Edges(left: 10, right: 10),
