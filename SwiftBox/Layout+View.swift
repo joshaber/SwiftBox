@@ -21,7 +21,7 @@ extension Layout {
 	public func apply(view: ViewType) {
 		view.frame = CGRectIntegral(frame)
 
-		for (s, layout) in Zip2(view.subviews, children) {
+		for (s, layout) in Zip2Sequence(view.subviews, children) {
 			let subview = s as ViewType
 			layout.apply(subview)
 		}
