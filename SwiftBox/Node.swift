@@ -36,8 +36,8 @@ public struct Edges {
     self.bottom = uniform
     self.top = uniform
 
-    self.start = 0
-    self.end = 0
+    self.start = Node.Undefined
+    self.end = Node.Undefined
   }
 }
 
