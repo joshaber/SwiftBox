@@ -9,21 +9,21 @@
 import Foundation
 
 #if os(iOS)
-	import UIKit
-	public typealias ViewType = UIView
+  import UIKit
+  public typealias ViewType = UIView
 #else
-	import AppKit
-	public typealias ViewType = NSView
+  import AppKit
+  public typealias ViewType = NSView
 #endif
 
 extension Layout {
-	/// Apply the layout to the given view hierarchy.
-	public func apply(_ view: ViewType) {
-		view.frame = frame.integral
+  /// Apply the layout to the given view hierarchy.
+  public func apply(_ view: ViewType) {
+    view.frame = frame.integral
 
-		for (s, layout) in zip(view.subviews, children) {
-			let subview = s as ViewType
-			layout.apply(subview)
-		}
-	}
+    for (s, layout) in zip(view.subviews, children) {
+      let subview = s as ViewType
+      layout.apply(subview)
+    }
+  }
 }

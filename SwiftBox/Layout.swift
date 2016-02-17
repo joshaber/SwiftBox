@@ -13,28 +13,28 @@ import Foundation
 /// Layouts may not be created manually. They only ever come from laying out a 
 /// Node. See Node.layout.
 public struct Layout {
-	public let frame: CGRect
-	public let children: [Layout]
+  public let frame: CGRect
+  public let children: [Layout]
 
-	internal init(frame: CGRect, children: [Layout]) {
-		self.frame = frame
-		self.children = children
-	}
+  internal init(frame: CGRect, children: [Layout]) {
+    self.frame = frame
+    self.children = children
+  }
 }
 
 extension Layout: CustomStringConvertible {
-	public var description: String {
-		return descriptionForDepth(0)
-	}
+  public var description: String {
+    return descriptionForDepth(0)
+  }
 
-	fileprivate func descriptionForDepth(_ depth: Int) -> String {
-		let selfDescription = "{origin={\(frame.origin.x), \(frame.origin.y)}, size={\(frame.size.width), \(frame.size.height)}}"
-		if children.count > 0 {
-			let indentation = (0...depth).reduce("\n") { accum, _ in accum + "\t" }
-			let childrenDescription = (children.map { $0.descriptionForDepth(depth + 1) }).joined(separator: indentation)
-			return "\(selfDescription)\(indentation)\(childrenDescription)"
-		} else {
-			return selfDescription
-		}
-	}
+  fileprivate func descriptionForDepth(_ depth: Int) -> String {
+    let selfDescription = "{origin={\(frame.origin.x), \(frame.origin.y)}, size={\(frame.size.width), \(frame.size.height)}}"
+    if children.count > 0 {
+      let indentation = (0...depth).reduce("\n") { accum, _ in accum + "\t" }
+      let childrenDescription = (children.map { $0.descriptionForDepth(depth + 1) }).joined(separator: indentation)
+      return "\(selfDescription)\(indentation)\(childrenDescription)"
+    } else {
+      return selfDescription
+    }
+  }
 }
