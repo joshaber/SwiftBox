@@ -62,7 +62,22 @@ class SwiftBoxTests: XCTestCase {
     _ = node.layout(maxWidth: maxWidth)
     XCTAssertEqual(maxWidthGiven, maxWidth)
   }
-  
+
+  func testPadding() {
+    let parent = Node(size: CGSize(width: 300, height: 300),
+                      children: [
+                        Node(size: CGSize(width: 0, height: 100),
+                             flex: 0)
+      ],
+                      direction: .row,
+                      padding: Edges(left: 10),
+                      childAlignment: .center)
+
+    let layout = parent.layout()
+    let nodeFrame = layout.children.first?.frame ?? .zero
+    XCTAssertEqual(nodeFrame.origin.x, 10, "sub node has a padding of 10")
+  }
+
   func testUndefinedPoint() {
     XCTAssertFalse(CGPoint.zero.isUndefined, "ordinary point is not undefined")
     XCTAssert(CGPoint(x: 0, y: Node.Undefined).isUndefined, "detects undefined point.y")
@@ -74,7 +89,7 @@ class SwiftBoxTests: XCTestCase {
     XCTAssert(CGSize(width: 0, height: Node.Undefined).isUndefined, "detects undefined size.height")
     XCTAssert(CGSize(width: Node.Undefined, height: 0).isUndefined, "detects undefined size.width")
   }
-  
+
   func testUndefinedRect() {
     XCTAssertFalse(CGRect.infinite.isUndefined, "infinite rect is not undefined")
     XCTAssertFalse(CGRect.null.isUndefined, "null rect is not undefined")

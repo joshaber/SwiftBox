@@ -21,7 +21,7 @@ public struct Edges {
     return (Float(left), Float(top), Float(right), Float(bottom), Float(start), Float(end))
   }
 
-  public init(left: CGFloat = 0, right: CGFloat = 0, bottom: CGFloat = 0, top: CGFloat = 0, start: CGFloat = 0, end: CGFloat = 0) {
+  public init(left: CGFloat = 0, right: CGFloat = 0, bottom: CGFloat = 0, top: CGFloat = 0, start: CGFloat = Node.Undefined, end: CGFloat = Node.Undefined) {
     self.left = left
     self.right = right
     self.bottom = bottom
