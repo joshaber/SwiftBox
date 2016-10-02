@@ -27,11 +27,11 @@ extension Layout: CustomStringConvertible {
 		return descriptionForDepth(0)
 	}
 
-	private func descriptionForDepth(depth: Int) -> String {
+	fileprivate func descriptionForDepth(_ depth: Int) -> String {
 		let selfDescription = "{origin={\(frame.origin.x), \(frame.origin.y)}, size={\(frame.size.width), \(frame.size.height)}}"
 		if children.count > 0 {
 			let indentation = (0...depth).reduce("\n") { accum, _ in accum + "\t" }
-			let childrenDescription = (children.map { $0.descriptionForDepth(depth + 1) }).joinWithSeparator(indentation)
+			let childrenDescription = (children.map { $0.descriptionForDepth(depth + 1) }).joined(separator: indentation)
 			return "\(selfDescription)\(indentation)\(childrenDescription)"
 		} else {
 			return selfDescription
