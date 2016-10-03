@@ -13,19 +13,19 @@ import SwiftBox
 class SwiftBoxTests: XCTestCase {
     func testDescription() {
 		let parent = Node(size: CGSize(width: 300, height: 300),
-                    childAlignment: .Center,
-					direction: .Row,
-                    children: [
-			Node(flex: 75,
-                 margin: Edges(left: 10, right: 10),
-                 size: CGSize(width: 0, height: 100)),
-			Node(flex: 15,
-				 margin: Edges(right: 10),
-                 size: CGSize(width: 0, height: 50)),
-			Node(flex: 10,
-				 margin: Edges(right: 10),
-				 size: CGSize(width: 0, height: 180)),
-		])
+		                  children: [
+			Node(size: CGSize(width: 0, height: 100),
+           margin: Edges(left: 10, right: 10),
+           flex: 75),
+			Node(size: CGSize(width: 0, height: 50),
+			     margin: Edges(right: 10),
+			     flex: 15),
+			Node(size: CGSize(width: 0, height: 180),
+			     margin: Edges(right: 10),
+			     flex: 10),
+		],
+		                  direction: .row,
+		                  childAlignment: .center)
 
 		let layout = parent.layout()
 		XCTAssert("\(layout)".utf16.count > 0, "Has a description.")

@@ -18,10 +18,10 @@ import Foundation
 
 extension Layout {
 	/// Apply the layout to the given view hierarchy.
-	public func apply(view: ViewType) {
-		view.frame = CGRectIntegral(frame)
+	public func apply(_ view: ViewType) {
+		view.frame = frame.integral
 
-		for (s, layout) in Zip2Sequence(view.subviews, children) {
+		for (s, layout) in zip(view.subviews, children) {
 			let subview = s as ViewType
 			layout.apply(subview)
 		}
