@@ -13,25 +13,25 @@ import SwiftBox
 class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet weak var window: NSWindow!
 
-	func applicationDidFinishLaunching(notification: NSNotification) {
-		let contentView = window.contentView as! NSView
+	func applicationDidFinishLaunching(_ notification: Notification) {
+		let contentView = window.contentView!
 		let parent = Node(size: contentView.frame.size,
-                          direction: .Row,
-                          childAlignment: .Center,
-                          children: [
-			Node(flex: 75,
-                 margin: Edges(left: 10, right: 10),
-                 size: CGSize(width: 0, height: 100)),
-			Node(flex: 15,
-                 margin: Edges(right: 10),
-                 size: CGSize(width: 0, height: 50)),
-			Node(flex: 10,
-                 margin: Edges(right: 10),
-                 size: CGSize(width: 0, height: 180)),
-		])
+		                  children: [
+                        Node(size: CGSize(width: 0, height: 100),
+                             margin: Edges(left: 10, right: 10),
+                             flex: 75),
+                        Node(size: CGSize(width: 0, height: 50),
+                             margin: Edges(right: 10),
+                             flex: 15),
+                        Node(size: CGSize(width: 0, height: 180),
+                             margin: Edges(right: 10),
+                             flex: 10),
+                        ],
+		                  direction: .row,
+                      childAlignment: .center)
 
 		let layout = parent.layout()
-		println(layout)
+		print(layout)
 
 		layout.apply(contentView)
 	}
