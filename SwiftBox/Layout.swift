@@ -22,16 +22,16 @@ public struct Layout {
 	}
 }
 
-extension Layout: Printable {
+extension Layout: CustomStringConvertible {
 	public var description: String {
 		return descriptionForDepth(0)
 	}
 
-	private func descriptionForDepth(depth: Int) -> String {
+	fileprivate func descriptionForDepth(_ depth: Int) -> String {
 		let selfDescription = "{origin={\(frame.origin.x), \(frame.origin.y)}, size={\(frame.size.width), \(frame.size.height)}}"
 		if children.count > 0 {
-			let indentation = reduce(0...depth, "\n") { accum, _ in accum + "\t" }
-			let childrenDescription = indentation.join(children.map { $0.descriptionForDepth(depth + 1) })
+			let indentation = (0...depth).reduce("\n") { accum, _ in accum + "\t" }
+			let childrenDescription = (children.map { $0.descriptionForDepth(depth + 1) }).joined(separator: indentation)
 			return "\(selfDescription)\(indentation)\(childrenDescription)"
 		} else {
 			return selfDescription

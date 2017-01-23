@@ -14,8 +14,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet weak var window: NSWindow!
 
 	func applicationDidFinishLaunching(notification: NSNotification) {
-		let contentView = window.contentView as NSView
+		let contentView = window.contentView as! NSView
 		let parent = Node(size: contentView.frame.size,
+                          direction: .Row,
                           childAlignment: .Center,
                           children: [
 			Node(flex: 75,

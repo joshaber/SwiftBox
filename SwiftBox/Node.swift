@@ -14,7 +14,7 @@ public struct Edges {
 	public let bottom: CGFloat
 	public let top: CGFloat
 
-	private var asTuple: (Float, Float, Float, Float) {
+	fileprivate var asTuple: (Float, Float, Float, Float) {
 		return (Float(left), Float(top), Float(right), Float(bottom))
 	}
 
@@ -34,31 +34,31 @@ public struct Edges {
 }
 
 public enum Direction: UInt32 {
-	case Column = 0
-	case Row = 1
+	case column = 0
+	case row = 1
 }
 
 public enum Justification: UInt32 {
-	case FlexStart = 0
-	case Center = 1
-	case FlexEnd = 2
-	case SpaceBetween = 3
-	case SpaceAround = 4
+	case flexStart = 0
+	case center = 1
+	case flexEnd = 2
+	case spaceBetween = 3
+	case spaceAround = 4
 }
 
 public enum ChildAlignment: UInt32 {
-	case FlexStart = 1
-	case Center = 2
-	case FlexEnd = 3
-	case Stretch = 4
+	case flexStart = 1
+	case center = 2
+	case flexEnd = 3
+	case stretch = 4
 }
 
 public enum SelfAlignment: UInt32 {
-	case Auto = 0
-	case FlexStart = 1
-	case Center = 2
-	case FlexEnd = 3
-	case Stretch = 4
+	case auto = 0
+	case flexStart = 1
+	case center = 2
+	case flexEnd = 3
+	case stretch = 4
 }
 
 /// A node in a layout hierarchy.
@@ -77,9 +77,9 @@ public struct Node {
 	public let selfAlignment: SelfAlignment
 	public let childAlignment: ChildAlignment
 	public let flex: CGFloat
-	public let measure: (CGFloat -> CGSize)?
+	public let measure: ((CGFloat) -> CGSize)?
 
-	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], direction: Direction = .Column, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .FlexStart, selfAlignment: SelfAlignment = .Auto, childAlignment: ChildAlignment = .Stretch, flex: CGFloat = 0, measure: (CGFloat -> CGSize)? = nil) {
+	public init(size: CGSize = CGSize(width: Undefined, height: Undefined), children: [Node] = [], direction: Direction = .column, margin: Edges = Edges(), padding: Edges = Edges(), wrap: Bool = false, justification: Justification = .flexStart, selfAlignment: SelfAlignment = .auto, childAlignment: ChildAlignment = .stretch, flex: CGFloat = 0, measure: ((CGFloat) -> CGSize)? = nil) {
 		self.size = size
 		self.children = children
 		self.direction = direction
@@ -93,17 +93,17 @@ public struct Node {
 		self.measure = measure
 	}
 
-	private func createUnderlyingNode() -> NodeImpl {
+	fileprivate func createUnderlyingNode() -> NodeImpl {
 		let node = NodeImpl()
-		node.node.memory.style.dimensions = (Float(size.width), Float(size.height))
-		node.node.memory.style.margin = margin.asTuple
-		node.node.memory.style.padding = padding.asTuple
-		node.node.memory.style.flex = Float(flex)
-		node.node.memory.style.flex_direction = css_flex_direction_t(direction.rawValue)
-		node.node.memory.style.flex_wrap = css_wrap_type_t(wrap ? 1 : 0)
-		node.node.memory.style.justify_content = css_justify_t(justification.rawValue)
-		node.node.memory.style.align_self = css_align_t(selfAlignment.rawValue)
-		node.node.memory.style.align_items = css_align_t(childAlignment.rawValue)
+		node.node.pointee.style.dimensions = (Float(size.width), Float(size.height))
+		node.node.pointee.style.margin = margin.asTuple
+		node.node.pointee.style.padding = padding.asTuple
+		node.node.pointee.style.flex = Float(flex)
+		node.node.pointee.style.flex_direction = css_flex_direction_t(direction.rawValue)
+		node.node.pointee.style.flex_wrap = css_wrap_type_t(wrap ? 1 : 0)
+		node.node.pointee.style.justify_content = css_justify_t(justification.rawValue)
+		node.node.pointee.style.align_self = css_align_t(selfAlignment.rawValue)
+		node.node.pointee.style.align_items = css_align_t(childAlignment.rawValue)
 		if let measure = measure {
 			node.measure = measure
 		}
@@ -112,10 +112,10 @@ public struct Node {
 	}
 
 	/// Lay out the receiver and all its children with an optional max width.
-	public func layout(maxWidth: CGFloat? = nil) -> Layout {
+    public func layout(maxWidth: CGFloat? = nil) -> Layout {
 		let node = createUnderlyingNode()
 		if let maxWidth = maxWidth {
-			node.layoutWithMaxWidth(maxWidth)
+			node.layout(withMaxWidth: maxWidth)
 		} else {
 			node.layout()
 		}
@@ -125,10 +125,28 @@ public struct Node {
 	}
 }
 
-private func createLayoutsFromChildren(node: NodeImpl) -> [Layout] {
+private func createLayoutsFromChildren(_ node: NodeImpl) -> [Layout] {
 	return node.children.map {
 		let child = $0 as! NodeImpl
 		let frame = child.frame
 		return Layout(frame: frame, children: createLayoutsFromChildren(child))
+	}
+}
+
+public extension CGPoint {
+	var isUndefined: Bool {
+		return x.isNaN || y.isNaN
+	}
+}
+
+public extension CGSize {
+	var isUndefined: Bool {
+		return width.isNaN || height.isNaN
+	}
+}
+
+public extension CGRect {
+	var isUndefined: Bool {
+		return origin.isUndefined || size.isUndefined
 	}
 }
